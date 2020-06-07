@@ -5,6 +5,8 @@ import org.activiti.app.servlet.ApiDispatcherServletConfiguration;
 import org.activiti.app.servlet.AppDispatcherServletConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
@@ -18,7 +20,12 @@ import org.springframework.web.servlet.DispatcherServlet;
  * @see modules/activiti-ui/activiti-app/src/main/webapp/WEB-INF/web.xml
  *      定义了listener {@link org.activiti.app.servlet.WebConfigurer}
  */
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        SecurityAutoConfiguration.class,
+        org.activiti.spring.boot.SecurityAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class
+
+})
 @Import({ApplicationConfiguration.class})
 public class AtcivitiUIApplication extends SpringBootServletInitializer {
 
