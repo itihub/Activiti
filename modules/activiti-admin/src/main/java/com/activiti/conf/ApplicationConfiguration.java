@@ -27,7 +27,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @Import(value = {
         SecurityConfiguration.class,
         AsyncConfiguration.class,
-        DatabaseConfiguration.class,
+//        DatabaseConfiguration.class,
         JacksonConfiguration.class})
 public class ApplicationConfiguration {
 
